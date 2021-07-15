@@ -14,12 +14,5 @@ import static org.mockito.Mockito.when;
 class BookServiceTest {
     @Mock
     BookRepository bookRepository;
-    @Test
-    public void save(){
-        Book book = new Book();
-        when(bookRepository.save(book)).thenReturn(book);
-        BookService bookService = new BookService(bookRepository);
-        Book newbook = bookService.save(book);
-        assertNotNull(newbook);
-    }
+
 }
