@@ -1,9 +1,11 @@
 package com.example.springioc.scope;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 // 싱글톤 스콥 안에 프로토 스콥이 포로토 스콥이 변경되지 않는다
+// 싱글톤 스콥 쓰레드 safe 하지 않음
 @Component
 public class Single {
     @Autowired
@@ -17,4 +19,5 @@ public class Single {
     }
 
      */
+
 }

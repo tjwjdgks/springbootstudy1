@@ -2,19 +2,26 @@ package com.example.springioc;
 
 import com.example.springioc.book.BookService;
 import com.example.springioc.book.MyBookRepository;
+import com.example.springioc.book.TestBookRepostiory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 import java.util.Arrays;
 
 // spring ioc container bean 설정파일 필요
 @SpringBootApplication // 어노테이션 가능
+@PropertySource("classpath:/app.properties")
 public class SpringiocApplication {
 
     public static void main(String[] args) {
@@ -34,7 +41,7 @@ public class SpringiocApplication {
         BookService bookService = (BookService) context.getBean("bookService");
         System.out.println(bookService.bookRepository!=null);
          */
-        SpringApplication.run(SpringiocApplication.class,args);
+
         // spring 구동 방식
         // commponet scan 범위 밖에도 가능
         /*
@@ -49,5 +56,21 @@ public class SpringiocApplication {
         app.run(args)
 
          */
+
+        // profile test인 testbookrepo
+        SpringApplication.run(SpringiocApplication.class,args);
     }
+    /*
+    @Bean
+    public MessageSource messageSource(){
+        var messageSource  = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:/messages");
+        //한글 깨질 경우
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(3);
+        return messageSource;
+
+    }
+
+     */
 }
