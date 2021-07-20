@@ -59,7 +59,7 @@ public class BookService {
      */
     @PostConstruct
     public void setup(){
-        System.out.println(bookRepository.getClass());
+        System.out.println("PostConstruct " + bookRepository.getClass());
     }
 
 }

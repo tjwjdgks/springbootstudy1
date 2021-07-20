@@ -4,6 +4,7 @@ import com.example.springioc.book.BookService;
 import com.example.springioc.book.MyBookRepository;
 import com.example.springioc.book.TestBookRepostiory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,17 +13,20 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.Arrays;
 
 // spring ioc container bean 설정파일 필요
 @SpringBootApplication // 어노테이션 가능
 @PropertySource("classpath:/app.properties")
-public class SpringiocApplication {
+//@EnableAsync // 비동기 실행
+public class SpringiocApplication /*implements ExitCodeGenerator*/ {
 
     public static void main(String[] args) {
         /*
@@ -70,6 +74,17 @@ public class SpringiocApplication {
         messageSource.setCacheSeconds(3);
         return messageSource;
 
+    }
+
+     */
+
+    // ContextClosedEvent 보기 위해 exit System.exit(130);
+    // or ContextClosedEvent 보기
+    // 디버그 모드에서 가능
+    /*
+    @Override
+    public int getExitCode() {
+        return 130;
     }
 
      */
