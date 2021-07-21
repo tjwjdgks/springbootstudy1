@@ -19,7 +19,7 @@ public class EventVaildatiorRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println(validator.getClass());
-        Event event = new Event();
+        Event event = new Event(0);
         //EventValidator eventValidator = new EventValidator(); // class 만들기
         event.setLimit(-1);
         event.setEmail("aaa2");
