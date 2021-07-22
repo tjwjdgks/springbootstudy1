@@ -1,0 +1,5 @@
+// package-info 파일 .java
+@NonNullApi // 패키지 이하에 있는 모든 return type에 nonull 적용
+package com.example.springioc;
+
+import org.springframework.lang.NonNullApi;
