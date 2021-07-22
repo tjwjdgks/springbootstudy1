@@ -1,26 +1,8 @@
 package com.example.springioc;
 
-import com.example.springioc.book.BookService;
-import com.example.springioc.book.MyBookRepository;
-import com.example.springioc.book.TestBookRepostiory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.scheduling.annotation.EnableAsync;
-
-import java.util.Arrays;
 
 // spring ioc container bean 설정파일 필요
 @SpringBootApplication // 어노테이션 가능
@@ -62,6 +44,12 @@ public class SpringiocApplication /*implements ExitCodeGenerator*/ {
          */
 
         // profile test인 testbookrepo
+
+        // SpringApplication 기본 webapplication을 띄워준다
+        // 서버모드가 아닌 상태로 띄우는 방법
+        //SpringApplication app = new SpringApplication(SpringiocApplication.class);
+        //app.setWebApplicationType(WebApplicationType.NONE);
+        //app.run(args);
         SpringApplication.run(SpringiocApplication.class,args);
     }
     /*
